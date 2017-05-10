@@ -1,0 +1,6 @@
+FontAwesomeParser:
+  modifiers:
+    size: 'x'
+    spin: 'spin'
+    rotate: 'rotate-'
+    flip: 'flip-'

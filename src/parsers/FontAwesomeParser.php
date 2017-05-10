@@ -24,9 +24,20 @@ class FontAwesomeParser
      */
     public static function handle_shortcode($arguments, $code, $parser, $shortcode, $extra = array())
     {
-        // Only if we're on a Page, so the CMS doesn't crash.
-        if($icon = $arguments["icon"]) {
-            return "<i class='fa fa-$icon' aria-hidden='true'></i>";
+        $modifierList = [];
+        $modifiers = Config::inst()->get(self::class, 'modifiers');
+        foreach($modifiers as $key => $modifier) {
+            if(array_key_exists($key, $arguments)) {
+                if(substr($modifier, -1) === '-') {
+                    $modifierList[] = 'fa-' . $modifier . $arguments[$key];
+                } else {
+                    $modifierList[] = 'fa-' . $modifier;
+                }
+            }
+        }
+        $modifierList = implode(' ', $modifierList);
+        if($icon = $arguments['icon']) {
+            return "<i class='fa fa-$icon $modifierList' aria-hidden='true'></i>";
         }
     }
 
