@@ -15,23 +15,21 @@ class FontAwesomeParser
 
     /**
      * @param string $arguments array with the type
-     * @param array $code string of the code to parse
-     * @param ShortcodeParser $parser Parser root user.
-     * @param string $shortcode
-     * @param array $extra
      *
      * @return String of parsed code.
      */
-    public static function handle_shortcode($arguments, $code, $parser, $shortcode, $extra = array())
+    public static function handle_shortcode($arguments)
     {
         $modifierList = [];
         $modifiers = Config::inst()->get(self::class, 'modifiers');
+        // Check for modifiers
         foreach($modifiers as $key => $modifier) {
             if(array_key_exists($key, $arguments)) {
-                if(substr($modifier, -1) === '-') {
-                    $modifierList[] = 'fa-' . $modifier . $arguments[$key];
+                // some modifiers don't take arguments
+                if($modifier['arguments'] === true) {
+                    $modifierList[] = 'fa-' . $modifier['code'] . $arguments[$key];
                 } else {
-                    $modifierList[] = 'fa-' . $modifier;
+                    $modifierList[] = 'fa-' . $modifier['code'];
                 }
             }
         }
