@@ -1,0 +1,25 @@
+{
+  "name": "firesphere/wysiwyg-font-awesome",
+  "description": "Add Font Awesome icons to the content with shortcodes",
+  "type": "silverstripe-module",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "silverstripe",
+    "Shortcode",
+    "FontAwesome"
+  ],
+  "authors": [
+    {
+      "name": "Simon Erkelens",
+      "email": "simonerkelens@silverstripe.com"
+    }
+  ],
+  "require": {
+    "silverstripe/framework": "^3.2",
+    "silverstripe/cms": "^3.2"
+  },
+  "extra": {
+    "installer-name": "wysiwyg-font-awesome"
+  },
+  "target-dir": "wysiwyg-font-awesome"
+}
