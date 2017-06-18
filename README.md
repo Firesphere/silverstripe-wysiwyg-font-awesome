@@ -27,6 +27,8 @@ FontAwesomeParser:
 ```
 If the modifier takes arguments, set it to true, otherwise, it's false (still needs an empty argument though).
 
+When the modifier accepts arguments, the code should be a `sprintf` compatible string (e.g. `code: '%sx'` to set the multiply modifier)
+
 
 ## Actual license
 
