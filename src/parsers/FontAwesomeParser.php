@@ -4,6 +4,7 @@ namespace Firesphere\FontAwesome;
 
 use SilverStripe\Core\Config\Config;
 use SilverStripe\View\Parsers\ShortcodeHandler;
+use SilverStripe\View\Parsers\ShortcodeParser;
 
 
 /**
@@ -20,10 +21,9 @@ class FontAwesomeParser implements ShortcodeHandler
     }
 
     /**
-     * @param string $arguments array with the type
-     *
+     * @param array $arguments array with the type
      * @param string $content
-     * @param \SilverStripe\View\Parsers\ShortcodeParser $parser
+     * @param ShortcodeParser $parser
      * @param string $shortcode
      * @param array $extra
      * @return String of parsed code.
@@ -48,7 +48,10 @@ class FontAwesomeParser implements ShortcodeHandler
         $modifierList = implode(' ', $modifierList);
         if($icon = $arguments['icon']) {
 
-            return "<i class='fa fa-$icon $modifierList' aria-hidden='true'></i>";
+            return "<i class='fa fa-$icon $modifierList' 
+                    aria-hidden='true'
+                    title='" . $arguments['icon'] ."'
+                     aria-label='" . $arguments['icon'] . "'></i>";
         }
 
         return '[fa' . $returnString . ']';

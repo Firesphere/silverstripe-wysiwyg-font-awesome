@@ -7,7 +7,7 @@ Firesphere\FontAwesome\FontAwesomeParser:
       code: 'spin'
       arguments: false
     rotate:
-      code: 'rotate-'
+      code: 'rotate-%s'
       arguments: true
     flip:
       code: 'flip-%s'
