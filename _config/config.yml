@@ -1,7 +1,7 @@
 FontAwesomeParser:
   modifiers:
     size:
-      code: 'x'
+      code: '%sx'
       arguments: true
     spin:
       code: 'spin'
@@ -10,5 +10,5 @@ FontAwesomeParser:
       code: 'rotate-'
       arguments: true
     flip:
-      code: 'flip-'
+      code: 'flip-%s'
       arguments: true

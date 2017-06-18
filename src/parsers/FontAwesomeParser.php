@@ -22,21 +22,26 @@ class FontAwesomeParser
     {
         $modifierList = [];
         $modifiers = Config::inst()->get(self::class, 'modifiers');
+        $returnString = '';
         // Check for modifiers
-        foreach($modifiers as $key => $modifier) {
-            if(array_key_exists($key, $arguments)) {
+        foreach ($arguments as $key => $modifier) {
+            if (array_key_exists($key, $modifiers)) {
                 // some modifiers don't take arguments
-                if($modifier['arguments'] === true) {
-                    $modifierList[] = 'fa-' . $modifier['code'] . $arguments[$key];
+                if ($modifiers[$key]['arguments'] === true) {
+                    $modifierList[] = sprintf('fa-' . $modifiers[$key]['code'], $arguments[$key]);
                 } else {
-                    $modifierList[] = 'fa-' . $modifier['code'];
+                    $modifierList[] = 'fa-' . $modifiers[$key]['code'];
                 }
+                $returnString .= ' ' . $key . '=' . $modifier;
             }
         }
         $modifierList = implode(' ', $modifierList);
-        if($icon = $arguments['icon']) {
+        if ($icon = $arguments['icon']) {
+
             return "<i class='fa fa-$icon $modifierList' aria-hidden='true'></i>";
         }
+
+        return '[fa' . $returnString . ']';
     }
 
 }
